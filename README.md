@@ -2,6 +2,10 @@
 
 A Model Context Protocol (MCP) server that provides tools for interacting with Trello boards. This server enables seamless integration with Trello's API while handling rate limiting, type safety, and error handling automatically.
 
+<a href="https://glama.ai/mcp/servers/7vcnchsm63">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/7vcnchsm63/badge" alt="Claude Trello MCP server" />
+</a>
+
 ## Features
 
 - **Full Trello Board Integration**: Interact with cards, lists, and board activities  
