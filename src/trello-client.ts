@@ -9,6 +9,7 @@ export class TrelloClient {
   constructor(private config: TrelloConfig) {
     this.axiosInstance = axios.create({
       baseURL: 'https://api.trello.com/1',
+      adapter: 'fetch',
       params: {
         key: config.apiKey,
         token: config.token,
@@ -230,13 +231,11 @@ export class TrelloClient {
       }
 
       // For Trello uploads, download the actual content
-      // The download endpoint requires OAuth header authentication (not query params)
       try {
         const contentResponse = await axios.get(attachment.url, {
           responseType: 'arraybuffer',
-          // Follow redirects (Trello often redirects to S3 signed URLs)
+          adapter: 'fetch',
           maxRedirects: 5,
-          // Increase timeout for larger files
           timeout: 60000,
           headers: {
             'Accept': '*/*',
