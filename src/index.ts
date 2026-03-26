@@ -126,6 +126,7 @@ interface UpdateCardArgs {
   description?: string;
   dueDate?: string;
   labels?: string[];
+  listId?: string;
 }
 
 const trelloUpdateCardTool: Tool = {
@@ -155,6 +156,10 @@ const trelloUpdateCardTool: Tool = {
         type: "array",
         description: "An array of label IDs (optional)",
         items: { type: "string" },
+      },
+      listId: {
+        type: "string",
+        description: "The ID of the list to move the card to (optional)",
       },
     },
     required: ["cardId"],
@@ -436,6 +441,7 @@ async function main() {
             description: args.description,
             dueDate: args.dueDate,
             labels: args.labels,
+            listId: args.listId,
           });
           return {
             content: [{ type: "text", text: JSON.stringify(response) }],
