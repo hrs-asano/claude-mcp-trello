@@ -102,6 +102,7 @@ export class TrelloClient {
     description?: string;
     dueDate?: string;
     labels?: string[];
+    listId?: string;
   }): Promise<TrelloCard> {
     return this.handleRequest(async () => {
       const response = await this.axiosInstance.put(`/cards/${params.cardId}`, {
@@ -109,6 +110,7 @@ export class TrelloClient {
         desc: params.description,
         due: params.dueDate,
         idLabels: params.labels,
+        idList: params.listId,
       });
       return response.data;
     });
